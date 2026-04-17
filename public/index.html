@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Al-Khumaisi Bean House — Biji Kopi Premium</title>
+  <meta name="description" content="Biji kopi premium pilihan dari Al-Khumaisi Bean House. Pesan langsung via WhatsApp, pengiriman cepat ke rumah Anda.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#" class="nav-brand">
+        <div class="brand-icon">☕</div>
+        <span id="navStoreName">Al-Khumaisi Bean House</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#products">Produk</a>
+        <a href="#about">Tentang</a>
+        <a href="#payment">Pembayaran</a>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <button class="nav-cart-btn" onclick="toggleCart()" aria-label="Keranjang">
+          🛒
+          <span class="cart-badge" id="cartBadge">0</span>
+        </button>
+        <button class="nav-mobile-btn" onclick="toggleMobileNav()" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">🌿 100% Biji Kopi Pilihan</div>
+        <h1 class="hero-title" id="heroTitle">
+          Biji Kopi <span>Premium</span>,<br>Langsung dari Petani!
+        </h1>
+        <p class="hero-subtitle" id="heroSubtitle">
+          Biji kopi berkualitas tinggi dari perkebunan terbaik Indonesia.
+          Dipanggang sempurna untuk menghasilkan aroma dan rasa terbaik.
+        </p>
+        <div class="hero-actions">
+          <a href="#products" class="btn btn-primary">☕ Pesan Sekarang</a>
+          <a href="#about" class="btn btn-outline">📍 Info Toko</a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="hero-stat-num">500+</div>
+            <div class="hero-stat-label">Pelanggan Puas</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">15+</div>
+            <div class="hero-stat-label">Varian Kopi</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">⭐ 4.9</div>
+            <div class="hero-stat-label">Rating</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-illustration">☕</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="section" id="products">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">☕ Koleksi Kopi</div>
+        <h2 class="section-title">Pilihan Biji Kopi Terbaik</h2>
+        <p class="section-subtitle">Semua produk kami dijamin fresh roasted dan berkualitas tinggi</p>
+      </div>
+      <div class="category-filter" id="categoryFilter"></div>
+      <div class="product-grid" id="productGrid">
+        <!-- Products loaded dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about" style="background:#FAF5F0">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">📍 Informasi Toko</div>
+        <h2 class="section-title">Tentang Kami</h2>
+      </div>
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="info-card-icon brown">🚚</div>
+          <h3 class="info-card-title">Area Pengiriman</h3>
+          <p class="info-card-text" id="infoDeliveryAreas">Memuat...</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon gold">🕐</div>
+          <h3 class="info-card-title">Jam Operasional</h3>
+          <p class="info-card-text" id="infoOperatingHours">Memuat...</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon green">📍</div>
+          <h3 class="info-card-title">Alamat Toko</h3>
+          <p class="info-card-text" id="infoAddress">Memuat...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAYMENT -->
+  <section class="section" id="payment">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">💳 Pembayaran</div>
+        <h2 class="section-title">Metode Pembayaran</h2>
+        <p class="section-subtitle">Pilih metode pembayaran yang paling nyaman untuk Anda</p>
+      </div>
+      <div class="payment-methods" id="paymentMethods">
+        <!-- Loaded dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <h3>☕ <span id="footerStoreName">Al-Khumaisi Bean House</span></h3>
+          <p id="footerDesc">Biji kopi premium pilihan dari perkebunan terbaik Indonesia.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Menu</h4>
+          <a href="#products">Produk</a>
+          <a href="#about">Tentang Kami</a>
+          <a href="#payment">Pembayaran</a>
+        </div>
+        <div class="footer-links">
+          <h4>Kontak</h4>
+          <a href="#" id="footerWaLink">💬 WhatsApp</a>
+          <a href="#" id="footerAddress">📍 Lokasi</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2026 <span id="footerCopyright">Al-Khumaisi Bean House</span>. developed by <a href="https://portofolio-afif-git.vercel.app/" target="_blank" class="footer-dev-link">Mephilez</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING CART -->
+  <div class="floating-cart" id="floatingCart">
+    <button class="floating-cart-btn" onclick="toggleCart()">
+      🛒
+      <span class="floating-badge" id="floatingBadge">0</span>
+    </button>
+  </div>
+
+  <!-- CART OVERLAY -->
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+  <!-- CART DRAWER -->
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h2>🛒 Keranjang Belanja</h2>
+      <button class="cart-close" onclick="toggleCart()">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty">
+        <div class="empty-icon">🛒</div>
+        <p>Keranjang masih kosong</p>
+        <p style="font-size:0.8rem;margin-top:4px;">Yuk pilih kopi favoritmu!</p>
+      </div>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span class="cart-total-label">Total</span>
+        <span class="cart-total-value" id="cartTotal">Rp 0</span>
+      </div>
+      <button class="cart-wa-btn" id="cartWaBtn" onclick="orderViaWhatsApp()" disabled>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Pesan via WhatsApp
+      </button>
+      <p class="cart-note">Anda akan diarahkan ke WhatsApp untuk konfirmasi pesanan</p>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

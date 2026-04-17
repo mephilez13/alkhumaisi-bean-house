@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel — Al-Khumaisi Bean House</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
+</head>
+<body>
+
+  <!-- LOGIN -->
+  <div class="admin-login-page" id="loginPage">
+    <div class="admin-login-card">
+      <h1>☕ Admin Panel</h1>
+      <p class="subtitle">Masuk untuk mengelola toko Anda</p>
+      <div class="login-error" id="loginError"></div>
+      <form onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-input" id="loginEmail" placeholder="admin@email.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input type="password" class="form-input" id="loginPassword" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="btn-login" id="loginBtn">Masuk</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div class="admin-layout" id="adminLayout">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar" id="adminSidebar">
+      <div class="admin-sidebar-brand">
+        <div class="brand-icon">☕</div>
+        Admin Panel
+      </div>
+      <nav class="admin-nav">
+        <button class="admin-nav-item active" onclick="switchTab('products')" data-tab="products">
+          <span class="nav-icon">📦</span> Produk
+        </button>
+        <button class="admin-nav-item" onclick="switchTab('settings')" data-tab="settings">
+          <span class="nav-icon">⚙️</span> Pengaturan
+        </button>
+        <button class="admin-nav-item" onclick="switchTab('password')" data-tab="password">
+          <span class="nav-icon">🔒</span> Ubah Password
+        </button>
+        <a class="admin-nav-item" href="/" target="_blank">
+          <span class="nav-icon">🌐</span> Lihat Website
+        </a>
+      </nav>
+      <div class="admin-sidebar-footer">
+        <button class="admin-logout" onclick="handleLogout()">
+          🚪 Keluar
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="admin-main">
+      <div class="admin-topbar">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <button class="nav-mobile-btn" onclick="toggleAdminSidebar()" style="display:none" id="sidebarToggle">
+            <span></span><span></span><span></span>
+          </button>
+          <h1 id="pageTitle">Kelola Produk</h1>
+        </div>
+        <div style="font-size:0.85rem;color:var(--text-muted)">
+          Selamat datang, <strong id="adminName">Admin</strong>
+        </div>
+      </div>
+
+      <div class="admin-content">
+        <!-- Products Tab -->
+        <div id="tab-products">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3>☕ Daftar Produk</h3>
+              <button class="btn-add" onclick="openProductModal()">+ Tambah Produk</button>
+            </div>
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Gambar</th>
+                  <th>Nama</th>
+                  <th>Kategori</th>
+                  <th>Harga</th>
+                  <th>Stok</th>
+                  <th>Status</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="productsTableBody">
+                <tr><td colspan="7" style="text-align:center;padding:40px;color:var(--text-muted)">Memuat...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Settings Tab -->
+        <div id="tab-settings" style="display:none">
+          <form onsubmit="saveSettings(event)">
+            <div class="settings-grid">
+              <div class="settings-section">
+                <h3>🏪 Informasi Toko</h3>
+                <div class="form-group">
+                  <label class="form-label">Nama Toko</label>
+                  <input type="text" class="form-input" id="set_store_name">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Tagline</label>
+                  <input type="text" class="form-input" id="set_store_tagline" placeholder="contoh: Biji Kopi Premium, Langsung dari Petani!">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Deskripsi</label>
+                  <textarea class="form-input form-textarea" id="set_store_description"></textarea>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Alamat Toko</label>
+                  <input type="text" class="form-input" id="set_store_address">
+                </div>
+              </div>
+
+              <div class="settings-section">
+                <h3>📱 WhatsApp & Operasional</h3>
+                <div class="form-group">
+                  <label class="form-label">Nomor WhatsApp (format: 628xxx)</label>
+                  <input type="text" class="form-input" id="set_whatsapp_number" placeholder="6281234567890">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Area Pengiriman</label>
+                  <textarea class="form-input form-textarea" id="set_delivery_areas" placeholder="Seluruh Indonesia via JNE, J&T, SiCepat..."></textarea>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Jam Operasional</label>
+                  <input type="text" class="form-input" id="set_operating_hours" placeholder="Senin - Sabtu: 08:00 - 20:00">
+                </div>
+              </div>
+
+              <div class="settings-section">
+                <h3>💳 Pembayaran — Bank Transfer</h3>
+                <div class="form-group">
+                  <label class="form-label">Nama Bank</label>
+                  <input type="text" class="form-input" id="set_payment_bank_name" placeholder="BCA">
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label">No. Rekening</label>
+                    <input type="text" class="form-input" id="set_payment_bank_account">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Atas Nama</label>
+                    <input type="text" class="form-input" id="set_payment_bank_holder">
+                  </div>
+                </div>
+              </div>
+
+              <div class="settings-section">
+                <h3>💳 Pembayaran — E-Wallet</h3>
+                <div class="form-group">
+                  <label class="form-label">OVO</label>
+                  <input type="text" class="form-input" id="set_payment_ovo" placeholder="08xxxxxxxxxx">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Dana</label>
+                  <input type="text" class="form-input" id="set_payment_dana" placeholder="08xxxxxxxxxx">
+                </div>
+              </div>
+            </div>
+            <div style="margin-top:24px;text-align:right;">
+              <button type="submit" class="btn-save" style="padding:14px 32px;font-size:1rem;">💾 Simpan Pengaturan</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Password Tab -->
+        <div id="tab-password" style="display:none">
+          <div class="settings-section" style="max-width:480px;">
+            <h3>🔒 Ubah Password</h3>
+            <form onsubmit="changePassword(event)">
+              <div class="form-group">
+                <label class="form-label">Password Saat Ini</label>
+                <input type="password" class="form-input" id="currentPassword" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Password Baru</label>
+                <input type="password" class="form-input" id="newPassword" required minlength="6">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Konfirmasi Password Baru</label>
+                <input type="password" class="form-input" id="confirmPassword" required minlength="6">
+              </div>
+              <button type="submit" class="btn-save">🔒 Ubah Password</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- PRODUCT MODAL -->
+  <div class="admin-modal-overlay" id="productModal">
+    <div class="admin-modal">
+      <div class="admin-modal-header">
+        <h2 id="modalTitle">Tambah Produk</h2>
+        <button class="admin-modal-close" onclick="closeProductModal()">✕</button>
+      </div>
+      <form onsubmit="saveProduct(event)" enctype="multipart/form-data">
+        <div class="admin-modal-body">
+          <input type="hidden" id="productId">
+          <div class="form-group">
+            <label class="form-label">Nama Produk *</label>
+            <input type="text" class="form-input" id="productName" required placeholder="contoh: Arabica Gayo Premium">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Kategori</label>
+              <input type="text" class="form-input" id="productCategory" placeholder="Arabica" list="categoryList">
+              <datalist id="categoryList">
+                <option value="Arabica">
+                <option value="Robusta">
+                <option value="Blend">
+                <option value="Drip Bag">
+                <option value="Liberica">
+                <option value="Excelsa">
+              </datalist>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Satuan</label>
+              <input type="text" class="form-input" id="productUnit" placeholder="gr">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Harga (Rp) *</label>
+              <input type="number" class="form-input" id="productPrice" required min="0" placeholder="85000">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Stok</label>
+              <input type="number" class="form-input" id="productStock" min="0" placeholder="50">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Deskripsi</label>
+            <textarea class="form-input form-textarea" id="productDescription" placeholder="Biji kopi arabica single origin dari dataran tinggi Gayo, Aceh..."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Gambar Produk</label>
+            <input type="file" class="form-input" id="productImage" accept="image/*">
+            <div id="currentImage" style="margin-top:8px;"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Urutan</label>
+              <input type="number" class="form-input" id="productSort" min="0" placeholder="0">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Status</label>
+              <select class="form-input" id="productActive">
+                <option value="1">Aktif</option>
+                <option value="0">Nonaktif</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="admin-modal-footer">
+          <button type="button" class="btn-cancel" onclick="closeProductModal()">Batal</button>
+          <button type="submit" class="btn-save">💾 Simpan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>
