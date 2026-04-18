@@ -288,6 +288,9 @@ function renderPaymentMethods() {
       sub: `a/n ${s.payment_bank_holder || '-'}`
     });
   }
+  if (s.payment_shopeepay) {
+    methods.push({ icon: '🧡', title: 'ShopeePay', detail: `<span class="mono">${s.payment_shopeepay}</span>`, sub: '' });
+  }
   if (s.payment_dana) {
     methods.push({ icon: '💙', title: 'Dana', detail: `<span class="mono">${s.payment_dana}</span>`, sub: '' });
   }

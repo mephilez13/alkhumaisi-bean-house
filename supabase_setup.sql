@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS settings (
 -- 4. Insert default admin (password: admin123)
 -- Password hash for 'admin123' using bcrypt
 INSERT INTO admins (email, password_hash, name) VALUES 
-('admin@alkhumaisi.com', '$2a$10$8K7StQgJGqVZ4LPNd8Zv4.jk5YfP0e8VH5.KxU7tQr6wF0mTPjMZq', 'Admin Al-Khumaisi')
+('alkhumaisi@bean.com', '$2b$10$3QFciBwcCuEb0teN505kne37XPq9RzRRvwLyENgoZb1oY2qrjfq5e', 'Admin Al-Khumaisi')
 ON CONFLICT (email) DO NOTHING;
 
 -- 5. Insert default settings
@@ -52,7 +52,7 @@ INSERT INTO settings (key, value) VALUES
 ('payment_bank_name', 'BCA'),
 ('payment_bank_account', '1234567890'),
 ('payment_bank_holder', 'Al-Khumaisi'),
-('payment_ovo', ''),
+('payment_shopeepay', ''),
 ('payment_dana', '')
 ON CONFLICT (key) DO NOTHING;
 

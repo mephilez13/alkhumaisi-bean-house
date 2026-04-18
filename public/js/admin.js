@@ -273,7 +273,7 @@ async function loadSettings() {
       'store_name', 'store_tagline', 'store_description', 'store_address',
       'whatsapp_number', 'delivery_areas', 'operating_hours',
       'payment_bank_name', 'payment_bank_account', 'payment_bank_holder',
-      'payment_ovo', 'payment_dana'
+      'payment_shopeepay', 'payment_dana'
     ];
 
     fields.forEach(f => {
@@ -291,7 +291,7 @@ async function saveSettings(e) {
     'store_name', 'store_tagline', 'store_description', 'store_address',
     'whatsapp_number', 'delivery_areas', 'operating_hours',
     'payment_bank_name', 'payment_bank_account', 'payment_bank_holder',
-    'payment_ovo', 'payment_dana'
+    'payment_shopeepay', 'payment_dana'
   ];
 
   const data = {};

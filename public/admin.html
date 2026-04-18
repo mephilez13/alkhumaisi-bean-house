@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Panel — Al-Khumaisi Bean House</title>
   <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
 </head>
+
 <body>
 
   <!-- LOGIN -->
@@ -93,7 +96,9 @@
                 </tr>
               </thead>
               <tbody id="productsTableBody">
-                <tr><td colspan="7" style="text-align:center;padding:40px;color:var(--text-muted)">Memuat...</td></tr>
+                <tr>
+                  <td colspan="7" style="text-align:center;padding:40px;color:var(--text-muted)">Memuat...</td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -111,7 +116,8 @@
                 </div>
                 <div class="form-group">
                   <label class="form-label">Tagline</label>
-                  <input type="text" class="form-input" id="set_store_tagline" placeholder="contoh: Biji Kopi Premium, Langsung dari Petani!">
+                  <input type="text" class="form-input" id="set_store_tagline"
+                    placeholder="contoh: Biji Kopi Premium, Langsung dari Petani!">
                 </div>
                 <div class="form-group">
                   <label class="form-label">Deskripsi</label>
@@ -131,11 +137,13 @@
                 </div>
                 <div class="form-group">
                   <label class="form-label">Area Pengiriman</label>
-                  <textarea class="form-input form-textarea" id="set_delivery_areas" placeholder="Seluruh Indonesia via JNE, J&T, SiCepat..."></textarea>
+                  <textarea class="form-input form-textarea" id="set_delivery_areas"
+                    placeholder="Seluruh Indonesia via JNE, J&T, SiCepat..."></textarea>
                 </div>
                 <div class="form-group">
                   <label class="form-label">Jam Operasional</label>
-                  <input type="text" class="form-input" id="set_operating_hours" placeholder="Senin - Sabtu: 08:00 - 20:00">
+                  <input type="text" class="form-input" id="set_operating_hours"
+                    placeholder="Senin - Sabtu: 08:00 - 20:00">
                 </div>
               </div>
 
@@ -160,8 +168,8 @@
               <div class="settings-section">
                 <h3>💳 Pembayaran — E-Wallet</h3>
                 <div class="form-group">
-                  <label class="form-label">OVO</label>
-                  <input type="text" class="form-input" id="set_payment_ovo" placeholder="08xxxxxxxxxx">
+                  <label class="form-label">ShopeePay</label>
+                  <input type="text" class="form-input" id="set_payment_shopeepay" placeholder="08xxxxxxxxxx">
                 </div>
                 <div class="form-group">
                   <label class="form-label">Dana</label>
@@ -170,7 +178,8 @@
               </div>
             </div>
             <div style="margin-top:24px;text-align:right;">
-              <button type="submit" class="btn-save" style="padding:14px 32px;font-size:1rem;">💾 Simpan Pengaturan</button>
+              <button type="submit" class="btn-save" style="padding:14px 32px;font-size:1rem;">💾 Simpan
+                Pengaturan</button>
             </div>
           </form>
         </div>
@@ -244,7 +253,8 @@
           </div>
           <div class="form-group">
             <label class="form-label">Deskripsi</label>
-            <textarea class="form-input form-textarea" id="productDescription" placeholder="Biji kopi arabica single origin dari dataran tinggi Gayo, Aceh..."></textarea>
+            <textarea class="form-input form-textarea" id="productDescription"
+              placeholder="Biji kopi arabica single origin dari dataran tinggi Gayo, Aceh..."></textarea>
           </div>
           <div class="form-group">
             <label class="form-label">Gambar Produk</label>
@@ -278,4 +288,5 @@
 
   <script src="js/admin.js"></script>
 </body>
+
 </html>
